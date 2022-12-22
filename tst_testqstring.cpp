@@ -14,6 +14,7 @@ private slots:
     void toUpper();
     void toLower();
     void failChop();
+    void failClear();
 
 };
 
@@ -44,6 +45,13 @@ void TestQString::failChop()
     QString str = "google.com";
     str.chop(4);    // str = "google"
     QVERIFY(str == "google.");  // Will failed!
+}
+
+void TestQString::failClear()
+{
+    QString str = "This will clear later";
+    str.clear();    // str = ""
+    QCOMPARE(str, "Not null");  // Will failed!
 }
 
 QTEST_APPLESS_MAIN(TestQString)
